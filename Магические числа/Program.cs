@@ -20,8 +20,14 @@ namespace Магические_числа
 
         private int _bullets;
 
-        public bool CanShoot() => _bullets > _minValueBullets;
+        public bool CanShoot => _bullets > _minValueBullets;
 
-        public void Shoot() => _bullets -= _bulletsPerShot;
+        public void Shoot()
+        {
+            if (CanShoot == false)
+                throw new InvalidOperationException();
+
+            _bullets -= _bulletsPerShot;
+        }
     }
 }
